@@ -1,7 +1,25 @@
 from datetime import datetime, timedelta
+import requests
+from lxml import html
 
 
 _UCSA_DENTAL_URL = 'https://ucsa.org.nz/support/dental/'
+
+
+# Request headers
+_HEADERS = {
+    'accept': '*/*',
+    'content-type': 'application/json',
+    'origin': 'https://widgets.mywellness.com',
+    'referer': 'https://widgets.mywellness.com/',
+    'sec-ch-ua-mobile': '?0',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-site',
+    'x-mwapps-appid': 'EC1D38D7-D359-48D0-A60C-D8C0B8FB9DF9',
+    'x-mwapps-client': 'enduserweb',
+    'x-mwapps-clientversion': '1.3.3-1096,enduserweb'
+}
 
 
 def fill() -> bool:
@@ -13,7 +31,10 @@ def form_exists() -> bool:
     Checks if the form exists .
     :return: True if the form exist otherwise False.
     """
-    return False
+    r = requests.get(headers=_HEADERS, url=_UCSA_DENTAL_URL)
+    tree = html.fromstring(r.content)
+    items = tree.xpath("//div[@class='msl_notification']/span[@class='msl_info']")
+    return len(items) == 0
 
 
 def block_til_release(release) -> None:
