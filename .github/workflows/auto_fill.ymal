@@ -35,9 +35,8 @@ jobs:
 
         env:
           # Set up username/password from GitHub secrets so they can be accessed.
-          AB_USERNAME: ${{ secrets.USERNAME }}
-          AB_PASSWORD: ${{ secrets.PASSWORD }}
+          FORM_DATA: ${{ secrets.FORM }}
         run: |
-          # Run script to book new classes.
+          # Run script to auto fill form
           python ./auto_fill
 
