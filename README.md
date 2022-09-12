@@ -1,6 +1,6 @@
 # AutoFill
 
-[![Fill out form](https://github.com/zactodd/UCRecCentreAutoBook/actions/workflows/auto_book.yml/badge.svg)](https://github.com/zactodd/UCSADentialAutoFill/actions/workflows/auto_fill.yaml)
+[![Fill out form](https://github.com/zactodd/UCSADentialAutoFill/actions/workflows/auto_fill.yml/badge.svg)](https://github.com/zactodd/UCSADentialAutoFill/actions/workflows/auto_fill.yaml)
 
 # Script Automation
 ## Github Actions
