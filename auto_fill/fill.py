@@ -31,8 +31,6 @@ _FORM_REQUIRED = {
 _HEADERS = {
     'accept': '*/*',
     'content-type': 'application/json',
-    'origin': 'https://widgets.mywellness.com',
-    'referer': 'https://widgets.mywellness.com/',
     'sec-ch-ua-mobile': '?0',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
