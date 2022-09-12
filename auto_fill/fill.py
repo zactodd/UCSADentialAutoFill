@@ -50,8 +50,9 @@ class Info:
     is_domestic: int = attr.ib(converter=lambda x: 78 if bool(x) else 79)
     email: str = attr.ib()
     phone: str = attr.ib()
-    clinic: int = attr.ib(converter=lambda x: 83 if bool(x) else 84)
+    clinic: int = attr.ib(converter=lambda x: 83 if bool(x) or x == 'Ilam Dental' else 86)
     reason: str = attr.ib()
+        
 
 
 def fill(data) -> bool:
