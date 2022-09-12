@@ -10,7 +10,7 @@ The clinic need to be ste to either **Ilam Dental** or **Moriarty Dental**.
 {
   "first_name": "Zac",
   "last_name": "Todd",
-  "email": "zactodd0@gmail.com",
+  "email": "abc@gmail.com",
   "phone": "0211234567",
   "student_id": "12345678",
   "is_domestic": "True",
