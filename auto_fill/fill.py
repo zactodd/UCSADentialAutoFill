@@ -12,6 +12,7 @@ _FORM_VALUES = {
     'ctl00$dentalform$question_30$txtTextbox': 'first_name',
     'ctl00$dentalform$question_31$txtTextbox': 'last_name',
     'ctl00$dentalform$question_32$txtTextbox': 'student_id',
+    'ctl00$dentalform$question_33$txtTextbox': 'degree_major',
     'ctl00$dentalform$question_34$radioList': 'is_undergrad', # 76 or 77
     'ctl00$dentalform$question_35$radioList': 'is_domestic', # 78 or 79
     'ctl00$dentalform$question_36$txtTextbox': 'email',
@@ -46,6 +47,7 @@ class Info:
     first_name: str = attr.ib()
     last_name: str = attr.ib()
     student_id: str = attr.ib()
+    degree_major: str = attr.ib()
     is_undergrad: int = attr.ib(converter=lambda x: 76 if bool(x) else 77)
     is_domestic: int = attr.ib(converter=lambda x: 78 if bool(x) else 79)
     email: str = attr.ib()
