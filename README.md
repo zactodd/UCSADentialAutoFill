@@ -1,10 +1,21 @@
 # AutoFill
-# Script Automation
-## Github Actions
-First fork the repository.
+## Running
+You can either uses the workflow actions or run locally.
 
-Then you will need to setup 'secrets' for your ... .
-- Go to the repository settings
-- Select 'secrets.
-- Select 'add new repository secret'. 
-- Create a secret for 
+You will need to change the the **user_data.json** in the resourse folder.
+The clinic need to be ste to either **Ilam Dental** or **Moriarty Dental**.
+
+
+```json
+{
+  "first_name": "Zac",
+  "last_name": "Todd",
+  "email": "zactodd0@gmail.com",
+  "phone": "0211234567",
+  "student_id": "12345678",
+  "is_domestic": "True",
+  "is_undergrad": "False",
+  "reason": "Pain",
+  "clinic": "Ilam Dental"
+}
+```
