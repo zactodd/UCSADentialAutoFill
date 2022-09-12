@@ -4,6 +4,7 @@
   "email": "abc@gmail.com",
   "phone": "0211234567",
   "student_id": "12345678",
+  "degree_major": "maths",
   "is_domestic": "True",
   "is_undergrad": "False",
   "reason": "Pain",
