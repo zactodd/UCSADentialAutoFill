@@ -2,10 +2,13 @@ from datetime import datetime, timedelta
 import requests
 from lxml import html
 import attr
+import json
+import os
 
 
 _UCSA_DENTAL_URL = 'https://ucsa.org.nz/support/dental/'
 _UCSA_DENTAL_FORM = 'https://ucsa.org.nz/support/dental/#ctl00_dentalform_section'
+_USER_DATA = os.path.join(os.path.dirname(__file__), 'user_data.json')
 
 
 _FORM_VALUES = {
@@ -56,24 +59,37 @@ class Info:
     reason: str = attr.ib()
         
 
+def get_info() -> Info:
+    """
+    Reads info from user_data.json file
+    :return: Info(data)
+    """
+    with open(_USER_DATA) as f:
+        data = json.load(f)
+        return Info(**data)
 
-def fill(data) -> bool:
-    info = Info(data)
+
+def fill() -> bool:
+    """
+    Fills in web-from and submits it.
+    :return: True if form went through.
+    """
+    info = get_info()
     post_json = _FORM_REQUIRED
     post_json.update(form_view_state())
     post_json.update({k: info.__getattribute__(v) for k, v in _FORM_VALUES.items()})
     r = requests.post(headers=_HEADERS, url=_UCSA_DENTAL_FORM, json=post_json)
-    return True
+    return r.ok
 
 
 def form_view_state():
     r = requests.get(headers=_HEADERS, url=_UCSA_DENTAL_URL)
     tree = html.fromstring(r.content)
     return {
-        '__EVENTTARGET' : '',
-        '__EVENTARGUMENT' : '',
+        '__EVENTTARGET': '',
+        '__EVENTARGUMENT': '',
         '__VIEWSTATE': tree.xpath("//input[@id='__VIEWSTATE']")[0].value,
-        '__VIEWSTATEGENERATOR' : tree.xpath("//input[@id='__VIEWSTATEGENERATOR']")[0].value
+        '__VIEWSTATEGENERATOR': tree.xpath("//input[@id='__VIEWSTATEGENERATOR']")[0].value
     }
 
 
@@ -106,13 +122,13 @@ def block_till_form_exist(release, wait) -> bool:
     :param wait: The maximum time to wait for the form.
     :return: True if the form exists.
     """
-    has_form = False
+    has_form = form_exists()
     while not has_form and datetime.now() < release + wait:
         has_form = form_exists()
     return has_form
 
 
-def fill_on_release(release, data, wait=timedelta(minutes=10)) -> bool:
+def fill_on_release(release, wait=timedelta(minutes=10)) -> bool:
     """
     Fill the form when it is released
     :param release: The time the form is released.
@@ -121,6 +137,7 @@ def fill_on_release(release, data, wait=timedelta(minutes=10)) -> bool:
     """
     block_til_release(release)
     if block_till_form_exist(release, wait):
-        return fill(data)
+        return fill()
     else:
         return False
+
