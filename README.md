@@ -3,9 +3,7 @@
 You can either uses the workflow actions or run locally.
 
 You will need to change the the **user_data.json** in the auto_fill folder.
-The clinic need to be ste to either **Ilam Dental** or **Moriarty Dental**.
-
-If running via workflow fork as a private repo before changing **user_data.json**.
+The clinic needs to be either **Ilam Dental** or **Moriarty Dental**.
 
 ```json
 {
@@ -21,3 +19,5 @@ If running via workflow fork as a private repo before changing **user_data.json*
   "clinic": "Ilam Dental"
 }
 ```
+
+If running via workflow fork as a private repo before changing **user_data.json** to protect your data a bit more.
