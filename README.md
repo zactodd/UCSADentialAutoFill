@@ -1,7 +1,4 @@
 # AutoFill
-
-[![Fill out form](https://github.com/zactodd/UCSADentialAutoFill/actions/workflows/auto_fill.yml/badge.svg)](https://github.com/zactodd/UCSADentialAutoFill/actions/workflows/auto_fill.yaml)
-
 # Script Automation
 ## Github Actions
 First fork the repository.
